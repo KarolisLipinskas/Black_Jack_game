@@ -1,35 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import static helpers.Constants.SUITS;
 
-public class Deck {
-    List<Card> deck = new ArrayList<>();
-
+public class Deck extends CardList implements DeckInterface {
     Deck() {
         this.addNewDeck();
     }
 
     public void addNewDeck() {
-        String[] suits = {"heart", "diamond", "club", "spade"};
-        for (String suit : suits) {
-            for (int i = 1; i <= 13; i++) {
-                this.addCard(new Card(i, suit));
-            }
+        for (String suit : SUITS) { this.addSingleSuitCards(suit); }
+    }
+
+    private void addSingleSuitCards(String suit) {
+        for (int i = 1; i <= 13; i++) {
+            this.addCard(new Card(i, suit));
         }
     }
 
-    private void addCard(Card card) {
-        this.deck.add(card);
+    @Override
+    public void addCard(Card card) {
+        super.addCard(card);
     }
 
+    @Override
     public void removeCard(int index) {
-        this.deck.remove(index);
+        super.removeCard(index);
     }
 
+    @Override
     public Card getCardAt(int index) {
-        return deck.get(index);
+        return super.getCardAt(index);
     }
 
+    @Override
     public int size() {
-        return deck.size();
+        return super.size();
     }
 }
