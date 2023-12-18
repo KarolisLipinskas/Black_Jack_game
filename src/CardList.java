@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardList implements CardListInterface {
+public abstract class CardList implements CardListInterface {
     List<Card> cardList;
 
     CardList() {
